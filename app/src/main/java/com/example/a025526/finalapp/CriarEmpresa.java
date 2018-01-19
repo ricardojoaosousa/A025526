@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class CriarEmpresa extends EmpresasActivity{
     DatabaseHelper myDb;
-    EditText editNome, editRua, editTelefone ,editTextId;
+    EditText editNome, editRua, editTelefone ,editTextId, editEmail;
     Button btnAddData;
     Button btnviewAll;
     Button btnDelete;
@@ -29,10 +29,13 @@ public class CriarEmpresa extends EmpresasActivity{
         setContentView(R.layout.criarempresa);
         myDb = new DatabaseHelper(this);
 
+        editTextId = (EditText)findViewById(R.id.editTextId);
         editNome = (EditText)findViewById(R.id.editNome);
         editRua = (EditText)findViewById(R.id.editRua);
+        editEmail = (EditText)findViewById(R.id.editEmail);
         editTelefone = (EditText)findViewById(R.id.editTelefone);
-        editTextId = (EditText)findViewById(R.id.editTextId);
+
+
         btnAddData = (Button)findViewById(R.id.btnAddData);
         btnviewAll = (Button)findViewById(R.id.btnviewAll);
         btnUpdate= (Button)findViewById(R.id.btnUpdate);
@@ -64,7 +67,9 @@ public class CriarEmpresa extends EmpresasActivity{
                         boolean isUpdate = myDb.updateData(editTextId.getText().toString(),
                                 editNome.getText().toString(),
                                 editRua.getText().toString(),
-                                editTelefone.getText().toString());
+                                editTelefone.getText().toString(),
+                                editEmail.getText().toString());
+
                         if(isUpdate == true)
                             Toast.makeText(CriarEmpresa.this,"Data Update",Toast.LENGTH_LONG).show();
                         else
@@ -80,7 +85,8 @@ public class CriarEmpresa extends EmpresasActivity{
                     public void onClick(View v) {
                         boolean isInserted = myDb.insertData(editNome.getText().toString(),
                                 editRua.getText().toString(),
-                                editTelefone.getText().toString() );
+                                editTelefone.getText().toString(),
+                                editEmail.getText().toString());
                         if(isInserted == true)
                             Toast.makeText(CriarEmpresa.this,"Data Inserted",Toast.LENGTH_LONG).show();
                         else
@@ -105,10 +111,11 @@ public class CriarEmpresa extends EmpresasActivity{
 
                         StringBuffer buffer = new StringBuffer();
                         while (res.moveToNext()) {
-                            buffer.append("Id :"+ res.getString(0)+"\n");
-                            buffer.append("Name :"+ res.getString(1)+"\n");
-                            buffer.append("Surname :"+ res.getString(2)+"\n");
-                            buffer.append("Marks :"+ res.getString(3)+"\n\n");
+                            buffer.append("Id : "+ res.getString(0)+"\n");
+                            buffer.append("Nome : "+ res.getString(1)+"\n\n");
+                            buffer.append("Rua : "+ res.getString(2)+"\n");
+                            buffer.append("Telefone : "+ res.getString(3)+"\n");
+                            buffer.append("Email : "+ res.getString(4)+"\n");
                         }
 
                         // Show all data
