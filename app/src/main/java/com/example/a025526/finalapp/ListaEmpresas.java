@@ -1,7 +1,11 @@
 package com.example.a025526.finalapp;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -19,8 +23,7 @@ public class ListaEmpresas extends EmpresasActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listaempresas);
-
-        ListView listView = (ListView) findViewById(R.id.listview);
+        final ListView listView = (ListView) findViewById(R.id.listview);
         mydb = new DatabaseHelper(this);
 
         ArrayList<String> theList = new ArrayList<>();
@@ -35,5 +38,13 @@ public class ListaEmpresas extends EmpresasActivity {
                 listView.setAdapter(listAdapter);
             }
         }
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            public void onItemClick(AdapterView<?> parent, View v,int position, long id){
+                    Intent intent = new Intent(ListaEmpresas.this, PerfilEmpresa.class);
+                    intent.putExtra("LISTA", listView.getItemAtPosition(position).toString());
+                    startActivity(intent);
+
+            }
+        });
     }
 }

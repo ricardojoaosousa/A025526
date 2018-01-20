@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
         Button clicado = (Button) findViewById(R.id.bentrar);
         clicado.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Principal.class));
+                startActivity(new Intent(MainActivity.this, EmpresasActivity.class));
             }
         });
 

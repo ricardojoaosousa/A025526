@@ -11,7 +11,7 @@ import android.widget.Button;
  * Created by Ricardo on 15/01/18.
  */
 
-public class EmpresasActivity extends Principal{
+public class EmpresasActivity extends MainActivity{
 
     DatabaseHelper mydb;
     protected void onCreate(Bundle savedInstanceState){
@@ -19,6 +19,7 @@ public class EmpresasActivity extends Principal{
         setContentView(R.layout.empresas);
         EcraCriarEmpresa();
         EcraVerEmpresas();
+        EcraNormas();
     }
 
     private void EcraCriarEmpresa() {
@@ -35,6 +36,15 @@ public class EmpresasActivity extends Principal{
         clicado1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(EmpresasActivity.this, ListaEmpresas.class));
+            }
+        });
+    }
+
+    private void EcraNormas() {
+        Button clicado2 = (Button) findViewById(R.id.bnormas);
+        clicado2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(EmpresasActivity.this, Normas.class));
             }
         });
     }
