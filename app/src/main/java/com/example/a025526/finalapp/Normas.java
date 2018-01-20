@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.media.tv.TvContract;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewOutlineProvider;
@@ -84,7 +85,7 @@ public class Normas extends EmpresasActivity implements View.OnClickListener{
             OutputStream output = null;
 
 
-
+            String FicheiroGuardado = null;
             try {
                 URL url = new URL(urlDescarregar);
                 conexion = (HttpURLConnection) url.openConnection();
@@ -95,7 +96,7 @@ public class Normas extends EmpresasActivity implements View.OnClickListener{
                 }
 
                 input = conexion.getInputStream();
-                String FicheiroGuardado = getFilesDir() + "/data/DECSIS-ISO27001.pdf";
+                FicheiroGuardado = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/DECSIS-ISO27001.pdf";
 
                 int tamanhoFicheiro = conexion.getContentLength();
 
@@ -104,7 +105,7 @@ public class Normas extends EmpresasActivity implements View.OnClickListener{
                 int total = 0;
                 int count;
                 while ((count = input.read(data)) != -1) {
-                    sleep(100);
+                    sleep(10);
                     output.write(data, 0, count);
                     total += count;
                     publishProgress((int)(total + 100 / tamanhoFicheiro));
@@ -126,10 +127,14 @@ public class Normas extends EmpresasActivity implements View.OnClickListener{
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+
                 }
 
             return "Sucesso";
+
         }
+        //Toast.makeText(Normas.this, "YYY: " + FicheiroGuardado, Toast.LENGTH_LONG).show();
+
         protected void onProgressUpdate(Integer... values){
             super.onProgressUpdate(values);
             progressDialog.setIndeterminate(false);
