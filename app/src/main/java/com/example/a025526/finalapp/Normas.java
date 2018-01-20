@@ -91,11 +91,11 @@ public class Normas extends EmpresasActivity implements View.OnClickListener{
                 conexion.connect();
 
                 if (conexion.getResponseCode() != HttpURLConnection.HTTP_OK) {
-                    return "FAIL";
+                    return "Fail";
                 }
 
                 input = conexion.getInputStream();
-                String FicheiroGuardado = getFilesDir() + "/DECSIS-ISO27001.pdf";
+                String FicheiroGuardado = getFilesDir() + "/data/DECSIS-ISO27001.pdf";
 
                 int tamanhoFicheiro = conexion.getContentLength();
 
@@ -112,10 +112,10 @@ public class Normas extends EmpresasActivity implements View.OnClickListener{
             }
                 catch(MalformedURLException e){
                     e.printStackTrace();
-                    return "ERRO:"+e.getMessage();
+                    return "Erro:"+e.getMessage();
                 } catch(IOException e){
                     e.printStackTrace();
-                    return "ERRO:"+e.getMessage();
+                    return "Erro:"+e.getMessage();
                 } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally{
@@ -128,7 +128,7 @@ public class Normas extends EmpresasActivity implements View.OnClickListener{
                     }
                 }
 
-            return "SUCESSO";
+            return "Sucesso";
         }
         protected void onProgressUpdate(Integer... values){
             super.onProgressUpdate(values);

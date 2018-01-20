@@ -30,7 +30,7 @@ public class ListaEmpresas extends EmpresasActivity {
         Cursor data = mydb.getAllData();
 
         if(data.getCount() == 0){
-            Toast.makeText(ListaEmpresas.this, "The Database was empty", Toast.LENGTH_LONG).show();
+            Toast.makeText(ListaEmpresas.this, "A base de dados está vazia", Toast.LENGTH_LONG).show();
         }else{
             while(data.moveToNext()){
                 theList.add(data.getString(1));

@@ -71,9 +71,9 @@ public class CriarEmpresa extends EmpresasActivity{
                                 editEmail.getText().toString());
 
                         if(isUpdate == true)
-                            Toast.makeText(CriarEmpresa.this,"Data Update",Toast.LENGTH_LONG).show();
+                            Toast.makeText(CriarEmpresa.this,"Actualizado",Toast.LENGTH_LONG).show();
                         else
-                            Toast.makeText(CriarEmpresa.this,"Data not Updated",Toast.LENGTH_LONG).show();
+                            Toast.makeText(CriarEmpresa.this,"Não Actualizado",Toast.LENGTH_LONG).show();
                     }
                 }
         );
@@ -88,9 +88,9 @@ public class CriarEmpresa extends EmpresasActivity{
                                 editTelefone.getText().toString(),
                                 editEmail.getText().toString());
                         if(isInserted == true)
-                            Toast.makeText(CriarEmpresa.this,"Data Inserted",Toast.LENGTH_LONG).show();
+                            Toast.makeText(CriarEmpresa.this,"Dados Inseridos",Toast.LENGTH_LONG).show();
                         else
-                            Toast.makeText(CriarEmpresa.this,"Data not Inserted",Toast.LENGTH_LONG).show();
+                            Toast.makeText(CriarEmpresa.this,"Dados Não Inseridos",Toast.LENGTH_LONG).show();
 
                     }
                 }
@@ -105,7 +105,7 @@ public class CriarEmpresa extends EmpresasActivity{
                         Cursor res = myDb.getAllData();
                         if(res.getCount() == 0) {
                             // show message
-                            showMessage("Error","Nothing found");
+                            showMessage("Erro"," Nada encontrado");
                             return;
                         }
 
@@ -119,7 +119,7 @@ public class CriarEmpresa extends EmpresasActivity{
                         }
 
                         // Show all data
-                        showMessage("Data",buffer.toString());
+                        showMessage("Dados",buffer.toString());
                     }
                 }
         );
