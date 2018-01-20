@@ -111,7 +111,7 @@ public class CriarEmpresa extends EmpresasActivity{
 
                         StringBuffer buffer = new StringBuffer();
                         while (res.moveToNext()) {
-                            buffer.append("Id : "+ res.getString(0)+"\n\n");
+                            buffer.append("\n"+"Id : "+ res.getString(0)+"\n\n");
                             buffer.append("Nome : "+ res.getString(1)+"\n");
                             buffer.append("Rua : "+ res.getString(2)+"\n");
                             buffer.append("Telefone : "+ res.getString(3)+"\n");

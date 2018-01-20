@@ -29,13 +29,28 @@ public class Normas extends EmpresasActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.normas);
 
-        ImageView imageView = (ImageView) findViewById(R.id.down1);
+        ImageView imageView = (ImageView) findViewById(R.id.pdf1);
         imageView.setOnClickListener(this);
+        ImageView imageView2 = (ImageView) findViewById(R.id.pdf2);
+        imageView2.setOnClickListener(this);
+        ImageView imageView3 = (ImageView) findViewById(R.id.pdf3);
+        imageView3.setOnClickListener(this);
+        ImageView imageView4 = (ImageView) findViewById(R.id.pdf4);
+        imageView4.setOnClickListener(this);
     }
 
     public void onClick(View view){
         switch (view.getId()){
-            case R.id.down1:
+            case R.id.pdf1:
+                descarregarPDF();
+                break;
+            case R.id.pdf2:
+                descarregarPDF();
+                break;
+            case R.id.pdf3:
+                descarregarPDF();
+                break;
+            case R.id.pdf4:
                 descarregarPDF();
                 break;
         }
